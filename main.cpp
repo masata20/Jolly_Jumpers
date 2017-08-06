@@ -9,7 +9,10 @@ const int MAX_SIZE = 3000;
 int abs_value(int); // return absolute value of given integer
 
 void process_array(bool [], int); // store true if given int value exist
-void test_array(bool [], int); // check the array if all indices have true or false
+bool test_array(bool [], int); // check the array if all indices have true or false
+
+
+void display_array(bool [], int); // for debuggin
 
 int main()
 {
@@ -33,17 +36,28 @@ int main()
 				int diff = current_value - previous_value;
 
 
-				process_array(hashed_array, diff);
+				process_array(hashed_array, abs_value(diff));
 
 				//cout << "difference between " << current_value << "and"
-			//		<< previous_value << "is " << abs_value(diff) << endl;
+				//	<< previous_value << "is " << abs_value(diff) << endl;
+			}
+			else
+			{
+				n = current_value; // first digit represent the number of digits
 			}
 			
 			//cout << "value is " << value << endl;
 
 			previous_value = current_value;
-			n++;
+			
 		}
+
+	//	display_array(hashed_array, n);
+
+		if (test_array(hashed_array, n))
+			cout << "Jolly" << endl;
+		else
+			cout << "Not Jolly" << endl; 
 
 	}
 
@@ -64,8 +78,30 @@ void process_array(bool arr[], int diff)
 {	
 	if (diff < MAX_SIZE)
 	{
+	//	cout << "make index " << diff << " is true" << endl;
 		arr[diff] = true;
 	}
 
 }
-	
+
+bool test_array(bool arr[], int n)
+{
+	for (int i = 1; i <= n-1; i++)
+	{
+		if (!arr[i])
+			return false;
+	}
+
+	return true;
+}
+
+void display_array(bool arr[], int n)
+{
+	for (int i = 1; i <= n; i++)
+		cout << "index " << i << " has " << arr[i] << endl;
+
+}
+
+
+
+
