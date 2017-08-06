@@ -19,14 +19,19 @@ int main()
 	
 	bool hashed_array[MAX_SIZE]; // it will store 1 if there is the same index number with the difference of two succesive input numbers
 	string line;
+	int counter = 0;
 
 	while (getline(cin, line))
 	{
+
 		if (line == "") break;
 
+		if ( counter > 0)
+			cout << endl;
+		
 		istringstream iss(line);
 
-		int n = 0;
+		int n = 0;	
 		iss >> n; // first represents the number of digits in the line
 		int current_value;
 		int previous_value;
@@ -40,20 +45,21 @@ int main()
 
 				process_array(hashed_array, abs_value(diff));
 
-				cout << "difference between " << current_value << "and"
-					<< previous_value << "is " << abs_value(diff) << endl;
+				//cout << "difference between " << current_value << "and"
+				//	<< previous_value << "is " << abs_value(diff) << endl;
 			}
 
 			previous_value = current_value;
 		}
 
-		display_array(hashed_array, n);
+		//display_array(hashed_array, n);
 
 		if (test_array(hashed_array, n))
-			cout << "Jolly" << endl;
+			cout << "Jolly";
 		else
-			cout << "Not Jolly" << endl; 
+			cout << "Not Jolly"; 
 
+		counter++;
 	}
 
 
@@ -73,7 +79,7 @@ void process_array(bool arr[], int diff)
 {	
 	if (diff < MAX_SIZE)
 	{
-		cout << "make index " << diff << " is true" << endl;
+	//	cout << "make index " << diff << " is true" << endl;
 		arr[diff] = true;
 	}
 
@@ -81,7 +87,7 @@ void process_array(bool arr[], int diff)
 
 bool test_array(bool arr[], int n)
 {
-	for (int i = 1; i <= n-1; i++)
+	for (int i = 1; i < n; i++)
 	{
 		if (!arr[i])
 			return false;
@@ -92,7 +98,7 @@ bool test_array(bool arr[], int n)
 
 void display_array(bool arr[], int n)
 {
-	for (int i = 1; i <= n; i++)
+	for (int i = 1; i < n; i++)
 		cout << "index " << i << " has " << arr[i] << endl;
 
 }
