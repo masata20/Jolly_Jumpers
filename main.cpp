@@ -6,7 +6,10 @@ using namespace std;
 
 const int MAX_SIZE = 3000;
 
-int abs_value(int);
+int abs_value(int); // return absolute value of given integer
+
+void process_array(bool [], int); // store true if given int value exist
+void test_array(bool [], int); // check the array if all indices have true or false
 
 int main()
 {
@@ -29,8 +32,11 @@ int main()
 			{
 				int diff = current_value - previous_value;
 
-				cout << "difference between " << current_value << "and"
-					<< previous_value << "is " << abs_value(diff) << endl;
+
+				process_array(hashed_array, diff);
+
+				//cout << "difference between " << current_value << "and"
+			//		<< previous_value << "is " << abs_value(diff) << endl;
 			}
 			
 			//cout << "value is " << value << endl;
@@ -53,3 +59,13 @@ int abs_value(int value)
 
 	return value;
 }
+
+void process_array(bool arr[], int diff)
+{	
+	if (diff < MAX_SIZE)
+	{
+		arr[diff] = true;
+	}
+
+}
+	
