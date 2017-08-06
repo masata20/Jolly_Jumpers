@@ -27,32 +27,27 @@ int main()
 		istringstream iss(line);
 
 		int n = 0;
+		iss >> n; // first represents the number of digits in the line
 		int current_value;
 		int previous_value;
-		while (iss >> current_value)
+		for ( int i = 0; i < n; i++)
 		{
-			if (n != 0)
+			iss >> current_value;
+			if (i != 0)
 			{
 				int diff = current_value - previous_value;
 
 
 				process_array(hashed_array, abs_value(diff));
 
-				//cout << "difference between " << current_value << "and"
-				//	<< previous_value << "is " << abs_value(diff) << endl;
+				cout << "difference between " << current_value << "and"
+					<< previous_value << "is " << abs_value(diff) << endl;
 			}
-			else
-			{
-				n = current_value; // first digit represent the number of digits
-			}
-			
-			//cout << "value is " << value << endl;
 
 			previous_value = current_value;
-			
 		}
 
-	//	display_array(hashed_array, n);
+		display_array(hashed_array, n);
 
 		if (test_array(hashed_array, n))
 			cout << "Jolly" << endl;
@@ -78,7 +73,7 @@ void process_array(bool arr[], int diff)
 {	
 	if (diff < MAX_SIZE)
 	{
-	//	cout << "make index " << diff << " is true" << endl;
+		cout << "make index " << diff << " is true" << endl;
 		arr[diff] = true;
 	}
 
