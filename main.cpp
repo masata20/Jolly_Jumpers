@@ -22,6 +22,7 @@ int main()
 	bool hashed_array[MAX_SIZE]; // it will store 1 if there is the same index number with the difference of two succesive input numbers
 	string line;
 
+
 	while (getline(cin, line))
 	{
 		if (line == "") break;
@@ -40,8 +41,6 @@ int main()
 			if (i != 0)
 			{
 				int diff = current_value - previous_value;
-
-
 				process_array(hashed_array, abs_value(diff));
 
 			//	cout << "difference between " << current_value << "and"
@@ -54,10 +53,15 @@ int main()
 		//display_array(hashed_array, n);
 
 		if (test_array(hashed_array, n))
-			cout << "Jolly" << endl;
+		{
+			cout << "Jolly";
+		}
 		else
-			cout << "Not Jolly" << endl; 
+		{
+			cout << "Not jolly"; 
+		}
 
+		cout << endl;
 	}
 
 
@@ -107,6 +111,4 @@ void array_init(bool arr[], int n)
 	for (int i = 0; i < n+1; i++)
 		arr[i] = false;
 }
-
-
 
